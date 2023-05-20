@@ -22,7 +22,7 @@
     </head>
     <body>
         <h2>
-            pueba laraven 10
+            este es contact
         </h2>
     </body>
 </html>
