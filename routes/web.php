@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Dashboard\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,22 +18,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+Auth::routes();
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::resource('/posts', PostController::class);
 
-Route::get('/message', function (){
-    return 'hello i am andres ';
-});
-
-Route::get('/message/{name}', function ($name){
-    return "hello i' am $name";
-});
-
-Route::get('/messageV2/guest/{name?}', function ($name = "usuario visitante no identificado"){
-    return "hello i' am $name";
-});
+Route::resource('/categories', CategoriesController::class);
