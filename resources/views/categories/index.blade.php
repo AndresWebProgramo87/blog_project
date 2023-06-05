@@ -6,13 +6,13 @@
             <table class="table table-hover">
                 <thead>
                     <th>
-                        columna 1
+                        Columna 1
                     </th>
                     <th>
-                        columna 2
+                        Columna 2
                     </th>
                     <th>
-                        columna 3
+                        Columna 3
                     </th>
                 </thead>
                 <tbody>

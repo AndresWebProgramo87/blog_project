@@ -16,17 +16,9 @@
 
                     {{ __('You are logged in!') }}
                     <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
+                        <img src="{{ asset('images/logo-escudo.png') }}" class="img_nav" style="width: 50%" alt="">
                         <div class="card-body">
                             <h5 class="card-title">modudo de post</h5>
-                            <p class="card-text">crear publicaciones.</p>
-                            <a href="#" class="btn btn-primary">Ir al modulo</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">modudo de categorias</h5>
                             <p class="card-text">crear publicaciones.</p>
                             <a href="#" class="btn btn-primary">Ir al modulo</a>
                         </div>

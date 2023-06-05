@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use app\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\StoreRequest;
 
 class CategoryController extends Controller
 {
@@ -14,7 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::paginate(2);
+
+        return view('dashboard.category.index', compact('categories'));
     }
 
     /**
@@ -24,7 +29,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $category = new Category();
+
+        return view('dashboard.category.create', compact('category'));
     }
 
     /**
@@ -35,7 +42,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category($request->validated());
+        $category->save();
+        return redirect()->route('categories.index')->with('status', 'Nueva categoría creada');
     }
 
     /**
@@ -44,9 +53,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('dashboard.category.show', compact('category'));
     }
 
     /**
