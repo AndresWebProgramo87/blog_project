@@ -28,10 +28,6 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(5);
-        /*if(!Gate::allows('index', $posts[0])){
-            abort(403);
-        }*/
-
         return view('dashboard.post.index', compact('posts'));
     }
 
@@ -57,11 +53,19 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
-        $post = new Post($request->validated());
-        /*return to_route('post.index')->with('status', "nuevo post creado");*/
-        return redirect()->route('posts')->with('status',  "nuevo post creado");
+        $post = new Post([
+            'title' => $request->title,
+            'slug' => $request->slug,
+            'content' => $request->content,
+            'category_id' => $request->category_id,
+            'description' => $request->description,
+            'posted' => $request->posted,
+            'image' => $request->image,
+        ]);
+        $post->save();
+        return redirect()->route('posts.index')->with('status', 'Publicación creada');
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Crear de Categoría de publicaciones</h2>
+    <h1>Crear de Categoría de publicaciones</h1>
     @include('dashboard.fragment._errors-form')
     <form action="{{ route('categories.store') }}" method="post">
         @include('dashboard.category._form')

@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>{{ $category->title }}</h2>
+    <h1>{{ $category->title }}</h1>
 @endsection
